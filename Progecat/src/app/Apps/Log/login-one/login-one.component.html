@@ -1,0 +1,47 @@
+<div *ngIf="Submitsed" class="flex justify-center items-center w-full h-screen bg-blue-100 bg-cover "  style="background-image: url(s/src/favicon.ico)" >
+  <div  class="shadow-blue-800 drop-shadow-2xl border-blue-400 border-0.5">
+    <div  class="bg-white p-8 rounded shadow-md w-full sm:w-96" >
+      <h2 class="text-2xl font-semibold mb-6 text-center">{{ 'ورود' | translate }}</h2>
+      <form [formGroup]="loginForme" (ngSubmit)="loginFun()">
+        <div class="mb-4">
+          <label  class="block text-gray-700">{{ 'ایمیل' | translate }}</label>
+          <input type="email" formControlName="username" name="username" class="mt-1 block w-full shadow-blue-200 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+          <div *ngIf="loginForme.get('username')?.invalid&&isSubmittedPassword" class="text-red-500" >
+            <div class="w-auto h-auto ">
+              <p>{{'لطفا یک ایمیل معتبر وارد نمایید'|translate}}</p></div>
+          </div>
+        </div>
+
+
+                <div class="mb-4">
+          <label  class="block text-gray-700">{{ 'رمز' | translate }}</label>
+          <input type="text" formControlName="password" name="password" class=" mt-1 block w-full shadow-blue-200 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+          <div *ngIf="loginForme.get('password')?.invalid&&isSubmittedEmile" >
+            <div class="w-auto h-auto text-red-500">
+              <p>{{'لطفا یک رمز معتبر وارد نمایید'|translate}}</p></div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between mb-4">
+          <label  class="flex items-center">
+            <input type="checkbox"  class="rounded border-gray-300 shadow-blue-200 shadow-sm  shadow focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+            <span class="ml-2 text-gray-700">{{ ' مرا یه خاطر بسپار' | translate }}</span>
+          </label>
+          <a href="#" class="text-blue-700 hover:underline">{{ 'فراموشی رمز عبور?' | translate }}</a>
+        </div>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-600">{{ 'ورود' | translate }}</button>
+      </form>
+      <div class="flex flex-grow">
+        <app-lan class="mt-4"></app-lan>
+        <p class="mt-4 text-sm text-gray-800 text-center inline grow">{{ 'ایا حسابی ندارید ? ' | translate }}<a routerLink="/s" class="text-blue-500 hover:underline">{{ 'ثبت نام' | translate }}</a></p>
+        <button type="button"  class="grow-0 w-auto mt-3 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-600">{{ 'بدون تصویر زمینه' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!Submitsed">
+<app-navbar></app-navbar>
+</div>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,100 @@
+<div class="bg-white p-8 rounded-md w-full ">
+  <div>
+    <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+      <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+        <table class="min-w-full leading-normal">
+          <thead class="text-right">
+          <tr>
+
+            <th
+              class="px-5 py-3 text-right border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              نام و نام خانوادگی
+            </th>
+            <th
+              class="px-5 py-3 text-right border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              نام پدر
+            </th>
+            <th
+              class="px-5 py-3 text-right border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+            شماره همراه
+            </th>
+            <th
+              class="px-5 py-3 text-right border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+            مدرک تحصیلی
+            </th>
+            <th
+              class="px-5 py-3 text-right border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              ادرس محل سکونت
+            </th>
+          </tr>
+
+          </thead>
+          <tbody>
+          <tr  *ngFor="let x of shabion.slice(startIndex, endIndex)">
+            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<span
+                    class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                        <span aria-hidden
+                                              class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+									<span class="relative">    {{x.name}} {{x.family}}</span>
+									</span>
+            </td>
+
+            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+              <p class="text-gray-900 whitespace-no-wrap">
+                {{x.nameFather}}
+              </p>
+            </td>
+
+            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+              <p class="text-gray-900 whitespace-no-wrap">
+                {{x.tahsilalt}}
+              </p>
+            </td>
+
+
+            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+              <p class="text-gray-900 whitespace-no-wrap">{{ x.naumberphon }}</p>
+            </td>
+
+
+            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+            <div class="flex items-center">
+                <div class="ml-3">
+                  <p class="text-gray-900 whitespace-no-wrap">
+                    {{x.addressHome}}
+                  </p>
+                </div>
+              </div>
+            </td>
+
+
+
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
+					 <span class="text-xs xs:text-sm text-gray-900">
+    نمایش {{ currentPage }} از {{ totalPages }} تا {{ Math.min(shabion.length, (currentPage * 10)) }}
+  </span>
+        <div class="inline-flex mt-2 xs:mt-0">
+
+          <button (click)="nextPage()"
+                  class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r disabled:opacity-50"
+                  [disabled]="currentPage === totalPages">
+            بعدی
+          </button>
+          &nbsp; &nbsp;
+          <button (click)="prevPage()"
+                  class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l disabled:opacity-50"
+                  [disabled]="currentPage === 1">
+            قبلی
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
